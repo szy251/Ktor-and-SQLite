@@ -1,0 +1,175 @@
+POST http://localhost:8080/customer
+Content-Type: application/json
+
+{
+"Imie": "Szymon",
+"Nazwisko": "Lutowicz",
+"Email": "szy251@gmail.com",
+"Nazwa": "glut251",
+"Haslo": "12345678"
+}
+
+###
+POST http://localhost:8080/customer
+Content-Type: application/json
+
+{
+"Imie": "Jan",
+"Nazwisko": "Piotrowski",
+"Email": "pietrow@gmail.com",
+"Nazwa": "piotrula77",
+"Haslo": "987654321"
+}
+###
+POST http://localhost:8080/customer
+Content-Type: application/json
+
+{
+  "Imie": "Jarek",
+  "Nazwisko": "Marucha",
+  "Email": "maruch@gmail.com",
+  "Nazwa": "JarekJarucha",
+  "Haslo": "qwerty"
+}
+
+###
+GET http://0.0.0.0:8080/customer
+Content-Type: application/json
+
+###
+
+POST http://localhost:8080/kategoria
+Content-Type: application/json
+
+{
+  "Nazwa": "Sprzęt",
+  "IdKategoria": "1"
+}
+
+###
+
+POST http://localhost:8080/produkt
+Content-Type: application/json
+
+{
+  "Nazwa": "Sztanga",
+  "Kod": "aa",
+  "Cena": "25",
+  "IdKategoria": "1",
+  "DostIlosc": "5"
+}
+
+###
+
+POST http://localhost:8080/produkt
+Content-Type: application/json
+
+{
+  "Nazwa": "Hantel",
+  "Kod": "bb",
+  "Cena": "7",
+  "IdKategoria": "1",
+  "DostIlosc": "16"
+}
+
+###
+
+POST http://localhost:8080/produkt
+Content-Type: application/json
+
+{
+  "Nazwa": "Guma Oporowa",
+  "Kod": "cc",
+  "Cena": "9",
+  "IdKategoria": "1",
+  "DostIlosc": "7"
+}
+
+###
+
+POST http://localhost:8080/produkt
+Content-Type: application/json
+
+{
+  "Nazwa": "Obciążenie",
+  "Kod": "dd",
+  "Cena": "5",
+  "IdKategoria": "1",
+  "DostIlosc": "32"
+}
+###
+
+GET http://0.0.0.0:8080/produkt/get
+Content-Type: application/json
+
+###
+
+POST http://localhost:8080/koszyk
+Content-Type: application/json
+
+{
+  "Email": "szy251@gmail.com",
+  "Kod": "dd",
+  "Ilosc": "3"
+}
+
+###
+
+POST http://localhost:8080/koszyk
+Content-Type: application/json
+
+{
+  "Email": "szy251@gmail.com",
+  "Kod": "aa",
+  "Ilosc": "1"
+}
+
+###
+
+POST http://localhost:8080/koszyk
+Content-Type: application/json
+
+{
+  "Email": "pietrow@gmail.com",
+  "Kod": "dd",
+  "Ilosc": "4"
+}
+
+###
+
+POST http://localhost:8080/koszyk
+Content-Type: application/json
+
+{
+  "Email": "pietrow@gmail.com",
+  "Kod": "bb",
+  "Ilosc": "2"
+}
+
+###
+
+POST http://localhost:8080/koszyk
+Content-Type: application/json
+
+{
+  "Email": "pietrow@gmail.com",
+  "Kod": "cc",
+  "Ilosc": "3"
+}
+
+###
+
+POST http://localhost:8080/koszyk
+Content-Type: application/json
+
+{
+  "Email": "maruch@gmail.com",
+  "Kod": "cc",
+  "Ilosc": "6"
+}
+
+###
+
+GET http://localhost:8080/koszyk/pietrow@gmail.com/bb
+Content-Type: application/json
+
