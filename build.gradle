@@ -7,6 +7,7 @@ buildscript {
     }
 }
 plugins{
+    id("com.github.johnrengelman.shadow") version "6.0.0"
     id("org.jetbrains.kotlin.jvm").version("1.6.10")
     id("org.jetbrains.kotlin.plugin.serialization") version "1.6.10"
     id 'application'
@@ -48,4 +49,21 @@ dependencies {
 }
 application {
     mainClassName = 'com.jetbrains.handson.httpapi.ApplicationKt'
+}
+/*task fatJar(type : Jar){
+    manifest {
+        atributest 'Main-Class' : mainClassName
+    }
+    from(configurations.runtimeClasspath.collect{it.isDirectory() ? it : zipTree(it)})
+    with jar
+}*/
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'com.example.ApplicationKt'
+        )
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
 }

@@ -3,6 +3,7 @@ package com.example.controllers
 import com.example.models.Kategoria
 import com.example.modelsDB.KategoriaDB
 import org.jetbrains.exposed.sql.*
+import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 import org.jetbrains.exposed.sql.transactions.transaction
 
 class KategoriaController {
@@ -19,6 +20,20 @@ class KategoriaController {
         transaction {
             KategoriaDB.deleteWhere{KategoriaDB.IdKategoria eq IdKategoria}
         }
+    }
+    fun getByIdKategoria(IdKategoria: String):ArrayList<Kategoria>{
+        val kategorie : ArrayList<Kategoria> = ArrayList()
+        transaction {
+            KategoriaDB.select(KategoriaDB.IdKategoria eq IdKategoria).map{
+                kategorie.add(
+                    Kategoria(
+                        it[KategoriaDB.Nazwa],
+                        it[KategoriaDB.IdKategoria]
+                    )
+                )
+            }
+        }
+        return kategorie
     }
     fun getAll():ArrayList<Kategoria>{
         val kategorie : ArrayList<Kategoria> = ArrayList()

@@ -19,7 +19,7 @@ fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
 @Suppress("unused") // Referenced in application.conf
 @kotlin.jvm.JvmOverloads
 fun Application.module() {
-    Database.connect("jdbc:sqlite:./src/data/data.db", "org.sqlite.JDBC")
+    Database.connect("jdbc:sqlite:./data.db", "org.sqlite.JDBC")
     transaction{
 
        // SchemaUtils.drop(CustomerDB, KategoriaDB, OrderDB, KoszykDB, ProduktDB)
@@ -34,7 +34,6 @@ fun Application.module() {
         install(ContentNegotiation) {
             gson {
                 setPrettyPrinting()
-                disableHtmlEscaping()
             }
         }
 

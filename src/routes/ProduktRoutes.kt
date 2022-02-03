@@ -3,6 +3,7 @@ package com.example.routes
 import com.example.controllers.ProduktController
 import com.example.models.Customer
 import com.example.models.Produkt
+import com.example.models.RespondBody
 import io.ktor.application.*
 import io.ktor.http.*
 import io.ktor.request.*
@@ -16,10 +17,10 @@ fun Application.regiestrProduktRoutes(){
 fun Route.ProduktRouting(){
     route("/produkt"){
         val produktController =ProduktController()
-        get("/get"){
+        get{
           call.respond(produktController.getAll())
         }
-        get("/get/{Kod}"){
+        get("{Kod}"){
             val Kod = call.parameters["Kod"] ?: return@get call.respondText(
                 "Niepoprawne dane",
                 status = HttpStatusCode.BadRequest
@@ -28,13 +29,20 @@ fun Route.ProduktRouting(){
         }
         post{
             val produkt = call.receive<Produkt>()
+            if(produktController.getbyKod(produkt.Nazwa).isNotEmpty())
+                call.respond(RespondBody(false,"Już istnieje"))
             produktController.adProdukt(produkt)
-            call.respondText("Produkt dodany poprawnie", status = HttpStatusCode.Created)
+            call.respond(RespondBody(true,"Poprawnie dodany"))
+        }
+        put{
+            val produkt = call.receive<Produkt>()
+            produktController.update(produkt)
+            call.respond(RespondBody(true,"Poprawnie zaktualizowany"))
         }
         delete("{Kod}"){
-            val Kod = call.parameters["Kod"] ?: return@delete call.respond(HttpStatusCode.BadRequest)
+            val Kod = call.parameters["Kod"] ?: return@delete call.respond(RespondBody(false,"Złe dane"))
             produktController.delete(Kod)
-            call.respond(HttpStatusCode.Accepted)
+            call.respond(RespondBody(true,"Poprawnie usunięty"))
         }
     }
 }

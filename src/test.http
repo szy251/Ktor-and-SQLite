@@ -1,43 +1,3 @@
-POST http://localhost:8080/customer
-Content-Type: application/json
-
-{
-"Imie": "Szymon",
-"Nazwisko": "Lutowicz",
-"Email": "szy251@gmail.com",
-"Nazwa": "glut251",
-"Haslo": "12345678"
-}
-
-###
-POST http://localhost:8080/customer
-Content-Type: application/json
-
-{
-"Imie": "Jan",
-"Nazwisko": "Piotrowski",
-"Email": "pietrow@gmail.com",
-"Nazwa": "piotrula77",
-"Haslo": "987654321"
-}
-###
-POST http://localhost:8080/customer
-Content-Type: application/json
-
-{
-  "Imie": "Jarek",
-  "Nazwisko": "Marucha",
-  "Email": "maruch@gmail.com",
-  "Nazwa": "JarekJarucha",
-  "Haslo": "qwerty"
-}
-
-###
-GET http://0.0.0.0:8080/customer
-Content-Type: application/json
-
-###
-
 POST http://localhost:8080/kategoria
 Content-Type: application/json
 
@@ -53,10 +13,9 @@ Content-Type: application/json
 
 {
   "Nazwa": "Sztanga",
-  "Kod": "aa",
-  "Cena": "25",
+  "Cena": "27.17",
   "IdKategoria": "1",
-  "DostIlosc": "5"
+  "Dostepnosc": "true"
 }
 
 ###
@@ -66,10 +25,9 @@ Content-Type: application/json
 
 {
   "Nazwa": "Hantel",
-  "Kod": "bb",
-  "Cena": "7",
+  "Cena": "7.99",
   "IdKategoria": "1",
-  "DostIlosc": "16"
+  "Dostepnosc": "true"
 }
 
 ###
@@ -80,9 +38,9 @@ Content-Type: application/json
 {
   "Nazwa": "Guma Oporowa",
   "Kod": "cc",
-  "Cena": "9",
+  "Cena": "9.99",
   "IdKategoria": "1",
-  "DostIlosc": "7"
+  "Dostepnosc": "false"
 }
 
 ###
@@ -92,84 +50,115 @@ Content-Type: application/json
 
 {
   "Nazwa": "Obciążenie",
-  "Kod": "dd",
-  "Cena": "5",
+  "Cena": "5.49",
   "IdKategoria": "1",
-  "DostIlosc": "32"
+  "Dostepnosc": "false"
 }
 ###
-
-GET http://0.0.0.0:8080/produkt/get
-Content-Type: application/json
-
-###
-
-POST http://localhost:8080/koszyk
+POST http://localhost:8080/kategoria
 Content-Type: application/json
 
 {
-  "Email": "szy251@gmail.com",
-  "Kod": "dd",
-  "Ilosc": "3"
+  "Nazwa": "Suplementy",
+  "IdKategoria": "2"
 }
-
 ###
-
-POST http://localhost:8080/koszyk
+POST http://localhost:8080/produkt
 Content-Type: application/json
 
 {
-  "Email": "szy251@gmail.com",
-  "Kod": "aa",
-  "Ilosc": "1"
+  "Nazwa": "Kreatyna",
+  "Cena": "5.49",
+  "IdKategoria": "2",
+  "Dostepnosc" : "true"
 }
-
 ###
-
-POST http://localhost:8080/koszyk
+POST http://localhost:8080/produkt
 Content-Type: application/json
 
 {
-  "Email": "pietrow@gmail.com",
-  "Kod": "dd",
-  "Ilosc": "4"
+  "Nazwa": "Białko",
+  "Cena": "6.89",
+  "IdKategoria": "2",
+  "Dostepnosc" : "true"
 }
-
 ###
 
-POST http://localhost:8080/koszyk
+POST http://localhost:8080/produkt
 Content-Type: application/json
 
 {
-  "Email": "pietrow@gmail.com",
-  "Kod": "bb",
-  "Ilosc": "2"
+  "Nazwa": "Witaminy",
+  "Cena": "2.89",
+  "IdKategoria": "2",
+  "Dostepnosc" : "false"
 }
-
 ###
 
-POST http://localhost:8080/koszyk
+POST http://localhost:8080/produkt
 Content-Type: application/json
 
 {
-  "Email": "pietrow@gmail.com",
-  "Kod": "cc",
-  "Ilosc": "3"
+  "Nazwa": "Spalacz tłuszczu",
+  "Cena": "7.20",
+  "IdKategoria": "2",
+  "Dostepnosc" : "true"
 }
-
 ###
 
-POST http://localhost:8080/koszyk
+POST http://localhost:8080/produkt
 Content-Type: application/json
 
 {
-  "Email": "maruch@gmail.com",
-  "Kod": "cc",
-  "Ilosc": "6"
+  "Nazwa": "Gryf",
+  "Cena": "32",
+  "IdKategoria": "1",
+  "Dostepnosc": "true"
 }
 
 ###
 
-GET http://localhost:8080/koszyk/pietrow@gmail.com/bb
+POST http://localhost:8080/produkt
 Content-Type: application/json
+
+{
+  "Nazwa": "Drążek",
+  "Cena": "15.80",
+  "IdKategoria": "1",
+  "Dostepnosc": "true"
+}
+
+###
+
+POST http://localhost:8080/kategoria
+Content-Type: application/json
+
+{
+  "Nazwa": "Usługi",
+  "IdKategoria": "3"
+}
+
+###
+
+POST http://localhost:8080/produkt
+Content-Type: application/json
+
+{
+  "Nazwa": "Plan dietetyczny",
+  "Cena": "45",
+  "IdKategoria": "3",
+  "Dostepnosc": "true"
+}
+
+###
+
+GET http://localhost:8080/produkt
+Content-Type: application/json
+
+###
+
+GET http://localhost:8080/kategoria
+Content-Type: application/json
+
+
 

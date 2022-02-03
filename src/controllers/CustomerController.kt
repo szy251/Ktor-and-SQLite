@@ -31,6 +31,22 @@ class CustomerController {
         }
         return customers
     }
+    fun getbyEmailandHaslo(Email:String, Haslo:String):ArrayList<Customer> {
+        val customer: ArrayList<Customer> = ArrayList()
+        transaction {
+            CustomerDB.select(CustomerDB.Email eq Email and (CustomerDB.Haslo eq Haslo)).map {
+                customer.add(Customer(
+                    it[CustomerDB.Imie],
+                    it[CustomerDB.Nazwisko],
+                    it[CustomerDB.Email],
+                    it[CustomerDB.Nazwa],
+                    it[CustomerDB.Haslo]
+                )
+                )
+            }
+        }
+        return customer
+    }
     fun getbyEmail(Email:String):ArrayList<Customer> {
         val customer: ArrayList<Customer> = ArrayList()
         transaction {
